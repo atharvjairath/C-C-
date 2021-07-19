@@ -1,30 +1,64 @@
-#include <bits/stdc++.h>
+#include <iostream>
+#include <cstring>
+#include <cctype>
+
 using namespace std;
 
-int main(){
-
-	int n;
-  cin>>n;
-	int arr[n];
-	for(int i=0;i<n;i++)
-  {
-			cin>>arr[i];
-  }
-	int res=0;
-	for (int i = 1; i < n-1; i++) {
-	    // Find the maximum element on its left
-	    int left = arr[i];
-	    for (int j=0; j<i; j++)
-	       left = max(left, arr[j]);
-
-	    // Find the maximum element on its right
-	    int right = arr[i];
-	    for (int j=i+1; j<n; j++)
-	       right = max(right, arr[j]);
-
-	   // Update the maximum water
-	   res = res + (min(left, right) - arr[i]);
-
+class String {
+public:
+char s[100];
+String get_string() {
+        cin >> s;
+        return *this;
 }
-cout<<res;
+
+char *put_string() {
+        return (char *) s;
+}
+
+
+int length() {
+        return strlen(s);
+}
+
+String operator=(const String &op) {
+        strcpy(s, op.s);
+        return *this;
+}
+
+String operator+(const String &op) {
+        String res;
+        res = *this;
+        strcat(res.s, op.s);
+        return res;
+}
+
+bool operator<=(String op) {
+        if (length() <= op.length())
+                return true;
+        else
+                return false;
+}
+};
+
+int main()
+{
+        String A, B;
+        cout << "Enter the first string: ";
+        A.get_string();
+        cout << "Enter the second string: ";
+        B.get_string();
+
+        String C = A + B;
+        cout << "\nConcatenated string: " << C.put_string() <<"\n";
+
+        cout << "\nString A <= String B: " << (A <= B ? "True\n": "False\n");
+        cout << "Length of string A: " << A.length() << "\n";
+        cout << "Length of string B: " << B.length() << "\n";
+
+        String D;
+        D=A;
+        cout<<"\nString D is: "<<D.put_string();
+
+        return 0;
 }
