@@ -52,16 +52,25 @@ int replacerootsum(node*root){
 }
 
 // Breadth first search (transverse)
+
 void bfs(node*root){
         queue<node*>q;
         q.push(root);
+        // adding space after every level
+        q.push(NULL);
         while(!q.empty()) {
                 node *x = q.front();
-                cout<<x->data<<",";
-                q.pop();
-                if(x->left) q.push(x->left);
-                if(x->right) q.push(x->right);
-                cout<<endl;
+                if(x==NULL) {
+                        cout<<endl;
+                        q.pop();
+                        if(!q.empty()) q.push(NULL);
+                }
+                else{
+                        cout<<x->data<<",";
+                        q.pop();
+                        if(x->left) q.push(x->left);
+                        if(x->right) q.push(x->right);
+                }
         }
         return;
 }
@@ -112,12 +121,10 @@ pair<int,int> diameterfast(node*root){
 }
 
 // Build balanced sub tree from an array
-node* buildbalancedtree(int a*,int s, int e){
-        if(s>e) {
-                return NULL;
-        }
+node* buildbalancedtree(int a[],int s, int e){
+        if(s>e) return NULL;
         int mid = (s+e)/2;
-        node * root = new node(arr[mid]);
+        node *root = new node(a[mid]);
         root->left = buildbalancedtree(a,s,mid-1);
         root->right = buildbalancedtree(a,mid+1,e);
         return root;
@@ -159,6 +166,7 @@ void print(node*root){
 int main(){
         node* root = buildtree();
         print(root);
+        bfs(root);
         cout<<"height  :"<<height(root)<<endl;
         printKthlevel(root,2);
         cout<<"Num of Nodes : "<<numofnodes(root)<<endl;
@@ -166,8 +174,8 @@ int main(){
         pair<int,int>ans = diameterfast(root);
         cout<<"diameter of tree: "<<ans.second<<endl;
         bfs(root);
-        cout<<"After sum"<<endl;
-        replacerootsum(root);
-        bfs(root);
+        //cout<<"After sum"<<endl;
+        //replacerootsum(root);
+        //bfs(root);
         return 0;
 }
