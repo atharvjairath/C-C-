@@ -71,6 +71,7 @@ void pop(){
 bool empty(){
         return v.size() == 1;
 }
+
 };
 
 int main(){
