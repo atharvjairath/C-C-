@@ -13,9 +13,11 @@ bool sortbysec(const pair<int,int> &a,
 int solve(vector<pair<int,int> > &task, int n){
         int ans =1;
         sort(task.begin(), task.end(), sortbysec);
-        for (int i=1; i<n; i++) {
-                if(task[i].first >= task[i-1].second) {
-                        cout<<"S"<<task[i].first<<" "<<"e"<<task[i-1].second<<endl;
+        int end = task[0].second;
+        for(int i=1; i<n; i++) {
+                if(task[i].first >= end) {
+                        //cout<<"S"<<task[i].first<<" "<<"e"<<task[i-1].second<<endl;
+                        end = task[i].second;
                         ans++;
                 }
         }
