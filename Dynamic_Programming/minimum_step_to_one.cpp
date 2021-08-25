@@ -27,6 +27,6 @@ int minSteps(int n, int dp[]){
 int main(){
         int n;
         cin>>n;
-        int dp[100000] = {0};
+        int dp[10000000] = {0};
         cout<<minSteps(n,dp)<<endl;
 }
