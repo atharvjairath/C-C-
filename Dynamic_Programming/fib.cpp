@@ -2,6 +2,7 @@
 using namespace std;
 
 
+// top down approach
 int fib(int n, int dp[]){
         //base case
         if(n==1 or n==0) return n;
