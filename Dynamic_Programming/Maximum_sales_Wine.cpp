@@ -31,9 +31,8 @@ int main() {
         int n = sizeof(price) / sizeof(price[0]);
         int dp[10000][10000] ={0};//dp
         int y=1;// year starts from 1
-        cout<<"Hi";
         int ans = maxProfit(price,0,n-1,y,dp);
-        cout <<"Ans:"<<ans << endl;
+        cout <<"Ans: "<<ans << endl;
 
         return 0;
 }
