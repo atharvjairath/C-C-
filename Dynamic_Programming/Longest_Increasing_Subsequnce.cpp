@@ -18,7 +18,7 @@ int longest_subsequence_1(int arr[],int n){
                                 dp[i] = max(dp[i],dp[j]+1);
                         }
                 }
-                cout<<i<<" "<<dp[i]<<endl;
+                //cout<<i<<" "<<dp[i]<<endl;
         }
 
         // now to return the max of dp
@@ -55,12 +55,9 @@ int main() {
         int arr[]={10,9,2,5,3,7,101,18};
         int n = sizeof(arr) / sizeof(arr[0]);
         // O(n^2) approach
-        cout<<longest_subsequence_1(arr,n);
+        cout<<longest_subsequence_1(arr,n)<<endl;
 
         // O(nlogn) approach
         cout<<longest_subsequence_2(arr,n);
-
-
-
 
 }
